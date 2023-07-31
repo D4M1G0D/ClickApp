@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SignUp</title>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <link rel="stylesheet" href="styles/estilos.css">
+  <script src="bundle.js"></script>
+  <script src="validaciones.js"></script>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Sign Up Caso </h1>
+
+    <form onsubmit="return validarFormulario()">
+      <div class="input-container">
+        <img src="images/email-icon.png" alt="User Icon">
+        <img src="images/pass-icon.png" alt="User Icon">
+        <img src="images/perfil-icon.png" alt="User Icon">
+      </div>
+      <div class="input-container">
+        <input type="email" id="email" placeholder="" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="input-container">
+        <input type="password" id="password" placeholder="" required>
+        <label for="password">Password</label>
+      </div>
+      <div class="input-container">
+        <input type="password" id="confirmPassword" placeholder="" required>
+        <label for="confirmPassword">Confirm Password</label>
+      </div>
+      <div>
+        <input type="submit" value="Sign Up">
+      </div>
+    </form>
+  </div>
+  
+  <script type="module">
+
+    // Import the functions you need from the SDKs you need
+  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  
+    // TODO: Add SDKs for Firebase products that you want to use
+  
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+  
+    // Your web app's Firebase configuration
+  
+    const firebaseConfig = {
+  
+      apiKey: "AIzaSyDwyK8CjCUK2_pg_FARhPSkPqRaE7d3NjE",
+  
+      authDomain: "clickapp-dff23.firebaseapp.com",
+  
+      projectId: "clickapp-dff23",
+  
+      storageBucket: "clickapp-dff23.appspot.com",
+  
+      messagingSenderId: "363402679769",
+  
+      appId: "1:363402679769:web:ceb6ba22447ed25f4a75c8"
+  
+    };
+    // Initialize Firebase
+  
+    const email = "damian@epn.edu.ec";
+    const password = "12345678";
+
+    const app = initializeApp(firebaseConfig);
+
+
+    //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import {getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"
+
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    // Initialize Firebase
+    
+  </script>
+</body>
+</html>
